@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from '../../../../styles/_chatbot.module.css';
+import styles from '../../../styles/_chatbot.module.css';
 
 const ChatbotPage = () => {
     const [isActive, setIsActive] = useState(false);

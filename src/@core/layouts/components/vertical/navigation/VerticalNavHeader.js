@@ -45,7 +45,7 @@ const VerticalNavHeader = props => {
       {userVerticalNavMenuBranding ? (
         userVerticalNavMenuBranding(props)
       ) : (
-        <Link href='/' passHref>
+        <Link href='/dashboard' passHref>
           <StyledLink>
           <img src="/images/favicon.png" alt="Logo" style={{ width: '30px', marginRight: '10px' }} /> 
             <HeaderTitle variant='h6' sx={{ ml: 3 }}>

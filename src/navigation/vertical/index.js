@@ -14,7 +14,7 @@ const navigation = () => {
     {
       title: 'Dashboard',
       icon: HomeOutline,
-      path: '/'
+      path: '/dashboard'
     },
     {
       title: 'Account Settings',
@@ -24,13 +24,13 @@ const navigation = () => {
     {
       title: 'Users',
       icon: Account,
-      path: '/pages/users',
+      path: '/users',
       openInNewTab: false
     },
     {
       title: 'ChatBot Assistant',
       icon: Robot,
-      path: '/pages/chatbot',
+      path: '/chatbot',
       openInNewTab: false
     },
     {
@@ -39,23 +39,23 @@ const navigation = () => {
     {
       title: 'Revenue',
       icon: Cash,
-      path: '/pages/revenue',
+      path: '/revenue',
       openInNewTab: false
     },
     {
       title: 'Questionnaire',
       icon: ClipboardListIcon,
-      path: '/pages/questionnaire',
+      path: '/questionnaire',
       openInNewTab: false
     },
     {
       title: 'Reports',
-      path: '/pages/reports',
+      path: '/reports',
       icon: ClipboardText
     },
     {
       title: 'Experts',
-      path: '/pages/experts',
+      path: '/experts',
       icon: AccountTie
     },
   ]

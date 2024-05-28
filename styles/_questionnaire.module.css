@@ -1,0 +1,156 @@
+/* _questionnaire.module.css */
+.questionnaireForm {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.categorySection {
+    margin-bottom: 20px;
+}
+
+.categoryTitle {
+    font-size: 1.5em;
+    color: #581B98;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #9C1DE7;
+    padding-bottom: 5px;
+}
+
+.categorySubTitle {
+    font-size: 1.3em;
+    color: #9C1DE7;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.questionItem {
+    margin-bottom: 15px;
+}
+
+.questionLabel {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.questionTextarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.submitButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #9C1DE7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submitButton:hover {
+    background-color: #9C1DE7;
+}
+
+.centerText {
+    text-align: center;
+  }
+
+.paginationButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.paginationButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #9C1DE7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.paginationButton:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.introSection, .contactSection, .fileUploadSection, .commentsSection {
+    margin-bottom: 20px;
+}
+
+.progressBar {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 13px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progressBarFill {
+    height: 20px;
+    width: 0;
+    background-color: #9C1DE7;
+    border-radius: 13px;
+    text-align: center;
+    color: white;
+    line-height: 20px;
+}
+
+.startButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #9C1DE7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-left: 340px;
+
+}
+
+.checklistCategory {
+    margin-bottom: 20px;
+}
+
+.checklistItem {
+    margin-bottom: 10px;
+}
+
+.checklistOptions {
+    display: flex;
+    gap: 10px; /* Adjust this value to control the spacing between options */
+}
+
+.checklistOptions label {
+    margin-right: 10px; /* Adjust this value to control the spacing between radio buttons and labels */
+}
+
+.marginLeft {
+    margin-left: 80px; /* Adjust the value as needed */
+  }
+
+  .goBackButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #9C1DE7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 350px;
+  }
