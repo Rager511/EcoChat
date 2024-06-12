@@ -31,7 +31,7 @@ const Trophy = () => {
     <Card sx={{ position: 'relative' }}>
       <CardContent>
         <Typography variant='h6' sx={{ mb: 4 }}>Welcome Back !</Typography>
-        <Typography variant='body2' sx={{ mb: 10 }}>Our chatbot serves as a valuable tool for ESG companies seeking to integrate sustainability into their core business operations, engage stakeholders effectively, and demonstrate their commitment to responsible and ethical practices. </Typography>
+        <Typography variant='body2' sx={{ mb: 10 }}>Our chatbot serves as a valuable tool for any company seeking to integrate sustainability into their core business operations, engage stakeholders effectively, and demonstrate their commitment to responsible and ethical practices. </Typography>
         <Link href='/chatbot/' passHref>
           <Button size='small' variant='contained'>
             Try it!

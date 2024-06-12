@@ -85,7 +85,7 @@ const ChatbotInteractionsTable = () => {
                   </div>
                   <div style={{ alignSelf: 'flex-start', marginBottom: '8px', marginLeft: '30px' }}>
                     <Typography variant="subtitle1" style={{ textAlign: 'left', marginLeft: '10px' }}>Chatbot</Typography>
-                    <div style={{ background: '#007bff', color: '#fff', padding: '10px', borderRadius: '10px', maxWidth: '70%', wordWrap: 'break-word', textAlign: 'left', whiteSpace: 'pre-line', paddingLeft: '10px' }}>
+                    <div style={{ background: '#581B98', color: '#fff', padding: '10px', borderRadius: '10px', maxWidth: '70%', wordWrap: 'break-word', textAlign: 'left', whiteSpace: 'pre-line', paddingLeft: '10px' }}>
                       <Typography variant="body1" sx={{color: '#fff'}}>{interaction.response}</Typography>
                     </div>
                   </div>

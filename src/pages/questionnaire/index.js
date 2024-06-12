@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styles from '../../../styles/_questionnaire.module.css';
 import { styled } from '@mui/material/styles';
 import Link from 'next/link'
-
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContentText from '@mui/material/DialogContentText';
 
 
 
@@ -35,6 +37,146 @@ const questions = {
         "How does your company ensure transparency in its reporting and disclosures?"
     ]
 };
+
+const questions2 = [
+    {
+        title: "Strategic Planning",
+        questions: [
+            {
+                question: "Have you conducted strategic planning in the last three years?",
+                answers: ["No (1 pt)", "Yes (2 pts)"]
+            },
+            {
+                question: "How often do you review your strategic planning?",
+                answers: ["Not done (0 pts)", "Information not available (1 pt)", "Annually (2 pts)", "Quarterly (3 pts)", "Monthly (4 pts)"]
+            }
+        ]
+    },
+    {
+        title: "Sales",
+        questions: [
+            {
+                question: "Can you establish an annual sales budget using historical sales data?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "Do you track actual sales against a budget?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "How often do you monitor sales performance (actual versus budget)?",
+                answers: ["No information available (0 pts)", "Annually (1 pt)", "Quarterly (2 pts)", "Monthly (3 pts)"]
+            },
+            {
+                question: "How do you track sales and opportunities?",
+                answers: ["Information not available (0 pts)", "Not done (1 pt)", "Consulting an expert (2 pts)", "Manual tracking (3 pts)", "Automated with software (4 pts)"]
+            }
+        ]
+    },
+    {
+        title: "Revenue / Expenses",
+        questions: [
+            {
+                question: "Can you establish an operating budget (revenue and expenses) using historical company data?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "How often are your company's financial results available for analysis?",
+                answers: ["Annually, upon production of financial statements (0 pts)", "Quarterly (1 pt)", "Monthly (2 pts)", "Real-time (3 pts)"]
+            },
+            {
+                question: "Can you continuously measure your revenue performance by identifying variances with a budget forecast during the year?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "Can you continuously measure your expense performance by identifying variances with a budget forecast during the year?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "How often do you monitor company profitability?",
+                answers: ["No information available (0 pts)", "Annually (1 pt)", "Quarterly (2 pts)", "Monthly (3 pts)"]
+            }
+        ]
+    },
+    {
+        title: "Production",
+        questions: [
+            {
+                question: "Are you able to track gross margins on your products and services?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "How often do you track gross margins on your company's products and services?",
+                answers: ["No information available (0 pts)", "Annually (1 pt)", "Quarterly (2 pts)", "Monthly (3 pts)", "Regularly (4 pts)"]
+            },
+            {
+                question: "How do you track your margins?",
+                answers: ["Information not available (0 pts)", "Not done (1 pt)", "Consulting an expert (2 pts)", "Manual tracking (3 pts)", "Automated with software (4 pts)"]
+            }
+        ]
+    },
+    {
+        title: "Human Resources",
+        questions: [
+            {
+                question: "Are you able to track your annual workforce planning in the company?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "How often do you track workforce planning (employees and subcontractors) in the company?",
+                answers: ["No information available (0 pts)", "Annually (1 pt)", "Quarterly (2 pts)", "Monthly (3 pts)"]
+            },
+            {
+                question: "How do you track workforce changes affecting employees and subcontractors during the year?",
+                answers: ["Not done (0 pts)", "Manual tracking (1 pt)", "Automated with software (2 pts)"]
+            },
+            {
+                question: "Are you able to track salary and subcontractor costs compared to your annual forecasts?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            }
+        ]
+    },
+    {
+        title: "Assets / Liabilities / Investments",
+        questions: [
+            {
+                question: "How are significant investment decisions made in your company?",
+                answers: ["Not done (0 pts)", "Informally and based on experience (1 pt)", "After consulting an expert (2 pts)", "After conducting a comprehensive analysis and simulations (3 pts)"]
+            },
+            {
+                question: "Are you able to simulate to determine the impact of an investment on assets, liabilities, or company cash flow in the future?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "How do you conduct simulations for your investment and financing decisions?",
+                answers: ["Not done (0 pts)", "Consulting an expert (1 pt)", "Manual simulation (2 pts)", "Automatically with software (3 pts)"]
+            }
+        ]
+    },
+    {
+        title: "Liquidity",
+        questions: [
+            {
+                question: "Are you able to establish a cash budget using your company's historical data?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            },
+            {
+                question: "How often is your company's cash budget available for analysis?",
+                answers: ["Not done (0 pts)", "Annually, upon production of financial statements (1 pt)", "Quarterly (2 pts)", "Monthly (3 pts)", "Real-time (4 pts)"]
+            },
+            {
+                question: "How do you track the company's cash budget?",
+                answers: ["Not done (0 pts)", "Consulting an expert (1 pt)", "Manual tracking (2 pts)", "Automatically with software (3 pts)"]
+            },
+            {
+                question: "Are you able to continuously measure liquidity performance by identifying variances with a budget forecast during the year?",
+                answers: ["No (0 pts)", "Yes (1 pt)"]
+            }
+        ]
+    },
+
+
+];
 
 const Checklist = {
     'Worker Health & Safety': [
@@ -115,20 +257,44 @@ const Questionnaire = () => {
             'Regulatory compliance - Social': Array(Checklist['Regulatory compliance - Social'].length).fill(''),
             'Community Involvement': Array(Checklist['Community Involvement'].length).fill(''),
             'Consumer Safety & Product Safety': Array(Checklist['Consumer Safety & Product Safety'].length).fill('')
-        }
+        },
+        questions2: Array(questions2.length).fill('')
     });
 
     const [page, setPage] = useState(0);
     const [submittedFirstQuestionnaire, setSubmittedFirstQuestionnaire] = useState(false);
+    const [notification, setNotification] = useState({ message: '', visible: false });
+
 
     const handleChange = (category, index, value) => {
         setResponses(prevResponses => {
             const newResponses = { ...prevResponses };
             newResponses[category][index] = value;
-
+    
             return newResponses;
         });
     };
+
+    const showNotification = (message) => {
+        setNotification({ message: message, visible: true });
+        setTimeout(() => {
+            setNotification({ ...notification, visible: false });
+        }, 4000);
+    };
+
+
+    const Notification = ({ message, visible }) => {
+        return (
+            <Dialog open={visible} sx={{ backgroundColor: 'light blue', padding: '5px' }}>
+                <DialogTitle sx={{ color: 'white', backgroundColor: '#9C1DE7' }}>Notification</DialogTitle>
+                <DialogContentText sx={{ padding: '40px', fontSize: '1.1rem', color: 'black', textAlign: 'center' }}>
+                    {message}
+                </DialogContentText>
+            </Dialog>
+        );
+    };
+
+
 
     const Img = styled('img')(({ theme }) => ({
         marginBottom: theme.spacing(10),
@@ -142,233 +308,346 @@ const Questionnaire = () => {
         [theme.breakpoints.up('lg')]: {
             marginTop: theme.spacing(13)
         }
-    }))
-
+    }));
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Submitted Responses:', responses);
+    
+        let emptyFields = [];
+    
+        switch (page) {
+            case 1:
+                emptyFields = Object.values(responses).filter(responseArray => {
+                    return Array.isArray(responseArray) && responseArray.every(response => typeof response === 'string' && response.trim() === '');
+                });
+                break;
+            case 2:
+                emptyFields = Object.values(responses.checklist).filter(responseArray => {
+                    return responseArray.some(response => typeof response === 'string' && response.trim() === '');
+                });
+                break;
+            case 3:
+                emptyFields = responses.scaling.filter(value => value === '');
+                break;
+            case 4:
+                emptyFields = Object.values(responses.checklist).filter(responseArray => {
+                    return responseArray.some(response => typeof response === 'string' && response.trim() === '');
+                });
+                break;
+            case 5:
+                emptyFields = responses.questions2.filter(response => typeof response === 'string' && response.trim() === '');
+                break;
+            default:
+                break;
+        }
+
+        console.log('Empty Fields before filtering:', emptyFields);
+
+        emptyFields = emptyFields.filter(responseArray => responseArray.every(field => field.trim() === ''));
+        
+        console.log('Empty Fields after filtering:', emptyFields);
+        
+        const areAnyEmptyFields = emptyFields.flat().every(field => field.trim() === '');
+
+        console.log('Empty Fields:', emptyFields);
+        console.log('Submitted First Questionnaire:', submittedFirstQuestionnaire);
+        console.log('Page:', page);
+
+        if (emptyFields > 0) {
+            showNotification('Please fill in all the fields before submitting.');
+
+            return;
+        }
         if (!submittedFirstQuestionnaire) {
             setSubmittedFirstQuestionnaire(true);
         }
-        setPage(4);
+
+        if (page === 0) {
+            setPage(1);
+        } else if (page === 1 || page === 2 || page === 3 || page === 4) {
+            setPage(page + 1);
+        }
     };
 
-    const handleChecklistChange = (category, index, value) => {
-        setResponses(prevResponses => {
-            const newResponses = { ...prevResponses };
-            newResponses.checklist[category][index] = value;
-
-            return newResponses;
-        });
+    const calculateProgress = () => {
+        switch (page) {
+            case 0:
+                return 0; // No progress on the first page
+            case 1:
+                return 25; // 25% progress on the second page
+            case 2:
+                return 50; // 50% progress on the third page
+            case 3:
+                return 75; // 75% progress on the fourth page
+            case 4:
+                return 100; // 100% progress on the final page
+            default:
+                return 0; // Default to 0 if page is out of range
+        }
     };
 
-    const nextPage = () => {
-        setPage(page + 1);
+    const progress = calculateProgress();
+
+
+    const handleStart = () => {
+        setPage(1);
     };
 
     const prevPage = () => {
         setPage(page - 1);
     };
 
+    const nextPage = () => {
+        setPage(page - 1);
+    };
+
     return (
-        <form onSubmit={handleSubmit} className={styles.questionnaireForm}>
-            {/* Introduction Section */}
-            {page === 0 && (
-                <div className={styles.introSection}>
-                    <h2>Welcome to the ESG Questionnaire</h2>
-                    <hr />
-                    <h3>Introduction: Assessing Your ESG Performance</h3>
-                    <p>
-                        In today's dynamic business landscape, Environmental, Social, and Governance (ESG) factors are increasingly recognized as critical indicators of a company's long-term sustainability and success.
-                    </p>
-                    <p>
-                        This questionnaire is designed to help your company evaluate its ESG performance across key areas, enabling you to identify strengths, pinpoint areas for improvement, and enhance overall sustainability practices.
-                    </p>
-                    <p>
-                        By participating in this assessment, you are taking a proactive step towards understanding and enhancing your company's impact on the environment, society, and governance structures.
-                    </p>
-                    <hr />
-                    <h3>Why Assess ESG Performance?</h3>
-                    <ul>
-                        <li>Risk Mitigation: Identifying and addressing ESG risks can help mitigate potential financial, reputational, and regulatory risks, safeguarding your company's long-term viability.</li>
-                        <li>Competitive Advantage: Demonstrating strong ESG performance can enhance your company's reputation, attract investors, and foster customer loyalty, providing a competitive edge in the market.</li>
-                        <li>Stakeholder Engagement: Engaging with stakeholders, including investors, employees, customers, and communities, on ESG matters fosters transparency, trust, and long-term partnerships.</li>
-                        <li>Sustainability Impact: Improving ESG performance contributes to positive environmental outcomes, promotes social equity and inclusion, and strengthens corporate governance, aligning with global sustainability goals.</li>
-                    </ul>
-                    <hr />
-                    <h3>How to Use This Questionnaire</h3>
-                    <p>
-                        This questionnaire is divided into sections covering Environmental, Social, and Governance aspects, each containing specific questions related to your company's practices and policies. Please take the time to provide accurate and comprehensive responses based on your current operations and initiatives.
-                    </p>
-                    <p>
-                        Your participation in this assessment is voluntary, and all responses will be kept confidential. The information gathered will be used solely for the purpose of evaluating your company's ESG performance and providing tailored recommendations for improvement.
-                    </p>
-                    <hr />
-                    <h3>Thank You</h3>
-                    <p>
-                        Thank you for your commitment to sustainability and for participating in this assessment. Your input is invaluable in driving positive change and advancing responsible business practices. Let's work together to create a more sustainable and resilient future for all.
-                    </p>
-                    <h4>Please click the button below to start.</h4>
-                    <button
-                        type="button"
-                        className={styles.startButton}
-                        onClick={nextPage}
-                    >
-                        Start
-                    </button>
-                </div>
-            )}
+        <div>
+            <Notification message={notification.message} visible={notification.visible} />
 
-            {/* Questionnaire Sections */}
-            {page === 1 && (
-                <>
-                    <div className={styles.categorySection}>
-                        <h3 className={styles.categoryTitle}>Questionnaire</h3>
-                        {Object.keys(questions).map(category => (
-                            <div key={category} className={styles.categorySection}>
-                                <h3 className={category === "environmental" || category === "social" || category === "governance" ? styles.categorySubTitle : styles.categoryTitle}>
-                                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                                </h3>
-                                {questions[category].map((question, index) => (
-                                    <div key={index} className={styles.questionItem}>
-                                        <label className={styles.questionLabel}>{question}</label>
-                                        <textarea
-                                            className={styles.questionTextarea}
-                                            value={responses[category][index]}
-                                            onChange={(e) => handleChange(category, index, e.target.value)}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                    {/* Pagination Buttons */}
-                    <div className={styles.paginationButtons}>
-                        <button type="button" className={styles.paginationButton} onClick={prevPage}>
-                            Previous
-                        </button>
-                        <button type="button" className={styles.paginationButton} onClick={nextPage}>
-                            Submit
+            {/* Progress Bar */}
+            <div className={styles.progressBar}>
+                <div className={styles.progress} style={{ width: `${progress}%` }}></div>
+            </div>
+
+            <form onSubmit={handleSubmit} className={styles.questionnaireForm}>
+                {/* Introduction Section */}
+                {page === 0 && (
+                    <div className={styles.introSection}>
+                        <h2>Welcome to the ESG Questionnaire</h2>
+                        <hr />
+                        <h3>Introduction: Assessing Your ESG Performance</h3>
+                        <p>
+                            In today's dynamic business landscape, Environmental, Social, and Governance (ESG) factors are increasingly recognized as critical indicators of a company's long-term sustainability and success.
+                        </p>
+                        <p>
+                            This questionnaire is designed to help your company evaluate its ESG performance across key areas, enabling you to identify strengths, pinpoint areas for improvement, and enhance overall sustainability practices.
+                        </p>
+                        <p>
+                            By participating in this assessment, you are taking a proactive step towards understanding and enhancing your company's impact on the environment, society, and governance structures.
+                        </p>
+                        <hr />
+                        <h3>Why Assess ESG Performance?</h3>
+                        <ul>
+                            <li>Risk Mitigation: Identifying and addressing ESG risks can help mitigate potential financial, reputational, and regulatory risks, safeguarding your company's long-term viability.</li>
+                            <li>Competitive Advantage: Demonstrating strong ESG performance can enhance your company's reputation, attract investors, and foster customer loyalty, providing a competitive edge in the market.</li>
+                            <li>Stakeholder Engagement: Engaging with stakeholders, including investors, employees, customers, and communities, on ESG matters fosters transparency, trust, and long-term partnerships.</li>
+                            <li>Sustainability Impact: Improving ESG performance contributes to positive environmental outcomes, promotes social equity and inclusion, and strengthens corporate governance, aligning with global sustainability goals.</li>
+                        </ul>
+                        <hr />
+                        <h3>How to Use This Questionnaire</h3>
+                        <p>
+                            This questionnaire is divided into sections covering Environmental, Social, and Governance aspects, each containing specific questions related to your company's practices and policies. Please take the time to provide accurate and comprehensive responses based on your current operations and initiatives.
+                        </p>
+                        <p>
+                            Your participation in this assessment is voluntary, and all responses will be kept confidential. The information gathered will be used solely for the purpose of evaluating your company's ESG performance and providing tailored recommendations for improvement.
+                        </p>
+                        <hr />
+                        <h3>Thank You</h3>
+                        <p>
+                            Thank you for your commitment to sustainability and for participating in this assessment. Your input is invaluable in driving positive change and advancing responsible business practices. Let's work together to create a more sustainable and resilient future for all.
+                        </p>
+                        <h4>Please click the button below to start.</h4>
+                        <button
+                            type="button"
+                            className={styles.startButton}
+                            onClick={handleStart}
+                        >
+                            Start
                         </button>
                     </div>
-                </>
-            )}
+                )}
 
-
-            {/* Checklist Section */}
-            {page === 2 && (
-                <>
-                    <div className={styles.categorySection}>
-                        <h3 className={styles.categoryTitle}>Checklist</h3>
-                        {Object.keys(Checklist).map(category => (
-                            <div key={category} className={styles.categorySection}>
-                                <h3 className={category === "Worker Health & Safety" || category === "Human Rights & Labour Practices" || category === "Regulatory compliance - Social" || category === "Community Involvement" || category === "Consumer Safety & Product Safety" ? styles.categorySubTitle : styles.categoryTitle}>
-                                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                                </h3>
-                                {Checklist[category].map((question, index) => (
-                                    <div key={index} className={styles.checklistItem}>
-                                        <label className={styles.questionLabel}>{question}</label>
-                                        <div className={styles.checklistOptions}>
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    name={`checklist-${category}-${index}`}
-                                                    value="Yes"
-                                                    checked={responses.checklist[category][index] === "Yes"}
-                                                    onChange={(e) => handleChecklistChange(category, index, e.target.value)}
-                                                />
-                                                Yes
-                                            </label>
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    name={`checklist-${category}-${index}`}
-                                                    value="No"
-                                                    checked={responses.checklist[category][index] === "No"}
-                                                    onChange={(e) => handleChecklistChange(category, index, e.target.value)}
-                                                />
-                                                No
-                                            </label>
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    name={`checklist-${category}-${index}`}
-                                                    value="NA"
-                                                    checked={responses.checklist[category][index] === "NA"}
-                                                    onChange={(e) => handleChecklistChange(category, index, e.target.value)}
-                                                />
-                                                NA
-                                            </label>
+                {/* Questionnaire Sections */}
+                {page === 1 && (
+                    <>
+                        <div className={styles.categorySection}>
+                            <h3 className={styles.categoryTitle}>Questionnaire</h3>
+                            {Object.keys(questions).map(category => (
+                                <div key={category} className={styles.categorySection}>
+                                    <h3 className={category === "environmental" || category === "social" || category === "governance" ? styles.categorySubTitle : styles.categoryTitle}>
+                                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                                    </h3>
+                                    {questions[category].map((question, index) => (
+                                        <div key={index} className={styles.questionItem}>
+                                            <label className={styles.questionLabel}>{question}</label>
+                                            <textarea
+                                                className={styles.questionTextarea}
+                                                value={responses[category][index]}
+                                                onChange={(e) => handleChange(category, index, e.target.value)}
+                                            />
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                        {/* Pagination Buttons */}
+                        <div className={styles.paginationButtons}>
+                            <button type="button" className={styles.paginationButton} onClick={prevPage}>
+                                Previous
+                            </button>
+                            <button type="submit" className={styles.paginationButton} onClick={handleSubmit}>
+                                Submit
+                            </button>
+                        </div>
+                    </>
+                )}
+
+
+                {/* Checklist Section */}
+                {page === 2 && (
+                    <>
+                        <div className={styles.categorySection}>
+                            <h3 className={styles.categoryTitle}>Checklist</h3>
+                            {Object.keys(Checklist).map(category => (
+                                <div key={category} className={styles.categorySection}>
+                                    <h3 className={category === "Worker Health & Safety" || category === "Human Rights & Labour Practices" || category === "Regulatory compliance - Social" || category === "Community Involvement" || category === "Consumer Safety & Product Safety" ? styles.categorySubTitle : styles.categoryTitle}>
+                                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                                    </h3>
+                                    {Checklist[category].map((question, index) => (
+                                        <div key={index} className={styles.checklistItem}>
+                                            <label className={styles.questionLabel}>{question}</label>
+                                            <div className={styles.checklistOptions}>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        name={`checklist-${category}-${index}`}
+                                                        value="Yes"
+                                                        checked={responses.checklist[category][index] === "Yes"}
+                                                        onChange={(e) => handleChecklistChange(category, index, e.target.value)}
+                                                    />
+                                                    Yes
+                                                </label>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        name={`checklist-${category}-${index}`}
+                                                        value="No"
+                                                        checked={responses.checklist[category][index] === "No"}
+                                                        onChange={(e) => handleChecklistChange(category, index, e.target.value)}
+                                                    />
+                                                    No
+                                                </label>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        name={`checklist-${category}-${index}`}
+                                                        value="NA"
+                                                        checked={responses.checklist[category][index] === "NA"}
+                                                        onChange={(e) => handleChecklistChange(category, index, e.target.value)}
+                                                    />
+                                                    NA
+                                                </label>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                        {/* Pagination Buttons */}
+                        <div className={styles.paginationButtons}>
+                            <button type="button" className={styles.paginationButton} onClick={prevPage}>
+                                Previous
+                            </button>
+                            <button type="submit" className={styles.paginationButton} onClick={handleSubmit}>
+                                Submit
+                            </button>
+                        </div>
+                    </>
+                )}
+
+                {/* Scaling Questions Section */}
+                {page === 3 && (
+                    <div className={styles.categorySection}>
+                        <h3 className={styles.categoryTitle}>Scaling Questions</h3>
+                        {scalingQuestions.map((question, index) => (
+                            <div key={index} className={styles.questionItem}>
+                                <label className={styles.questionLabel}>{question}</label>
+                                <div>
+                                    {[1, 2, 3, 4, 5].map(value => (
+                                        <label key={value}>
+                                            <input
+                                                type="radio"
+                                                name={`scaling-${index}`}
+                                                value={value}
+                                                checked={responses.scaling[index] === value}
+                                                onChange={(e) => handleChange('scaling', index, Number(e.target.value))}
+                                            />
+                                            {value}
+                                        </label>
+                                    ))}
+                                </div>
                             </div>
                         ))}
-                    </div>
-                    {/* Pagination Buttons */}
-                    <div className={styles.paginationButtons}>
-                        <button type="button" className={styles.paginationButton} onClick={prevPage}>
-                            Previous
-                        </button>
-                        <button type="button" className={styles.paginationButton} onClick={nextPage}>
-                            Submit
-                        </button>
-                    </div>
-                </>
-            )}
-
-            {/* Scaling Questions Section */}
-            {page === 3 && (
-                <div className={styles.categorySection}>
-                    <h3 className={styles.categoryTitle}>Scaling Questions</h3>
-                    {scalingQuestions.map((question, index) => (
-                        <div key={index} className={styles.questionItem}>
-                            <label className={styles.questionLabel}>{question}</label>
-                            <div>
-                                {[1, 2, 3, 4, 5].map(value => (
-                                    <label key={value}>
-                                        <input
-                                            type="radio"
-                                            name={`scaling-${index}`}
-                                            value={value}
-                                            checked={responses.scaling[index] === value}
-                                            onChange={(e) => handleChange('scaling', index, Number(e.target.value))}
-                                        />
-                                        {value}
-                                    </label>
-                                ))}
-                            </div>
+                        {/* Pagination Buttons */}
+                        <div className={styles.paginationButtons}>
+                            <button type="button" className={styles.paginationButton} onClick={prevPage}>
+                                Previous
+                            </button>
+                            <button type="submit" className={styles.paginationButton} onClick={handleSubmit}>
+                                Submit
+                            </button>
                         </div>
-                    ))}
-                    {/* Pagination Buttons */}
-                    <div className={styles.paginationButtons}>
-                        <button type="button" className={styles.paginationButton} onClick={prevPage}>
-                            Previous
-                        </button>
-                        <button type="submit" className={styles.paginationButton} onClick={nextPage}>
-                            Submit
-                        </button>
                     </div>
-                </div>
-            )}
-            {/* Final Thank You Page */}
-            {page === 4 && (
-                <div className={styles.thankYouPage}>
-                    <h2 className={styles.centerText}>Thank You!</h2>
-                    <p className={styles.centerText}>Your questionnaire responses have been successfully submitted.</p>
-                    <p className={styles.centerText}>We appreciate your participation and commitment to sustainability.</p>
-                    <Img className={styles.marginLeft} height='400' alt='Thank You Image' src='/images/pages/401.png' />
-                    <div>
-                    <Link href='/dashboard/' passHref>
-                        <button type="button" className={styles.goBackButton} onClick={nextPage}>
-                            Go Back 
-                        </button>
-                    </Link>
+                )}
+                {page === 4 && (
+                    <>
+                        <div className={styles.categorySection}>
+                            <h3 className={styles.categoryTitle}>Additional Questions</h3>
+                            {questions2.map((section, index) => (
+                                <div key={index} className={styles.categorySection}>
+                                    <h3 className={styles.categorySubTitle}>{section.title}</h3>
+                                    {section.questions.map((question, qIndex) => (
+                                        <div key={qIndex} className={styles.questionItem}>
+                                            <label className={styles.questionLabel}>{question.question}</label>
+                                            <div>
+                                                {question.answers.map((answer, aIndex) => (
+                                                    <label key={aIndex}>
+                                                        <input
+                                                            type="radio"
+                                                            name={`questions2-${index}-${qIndex}`}
+                                                            value={answer}
+                                                            checked={responses.questions2[index] === answer}
+                                                            onChange={(e) => handleChange('questions2', index, e.target.value)}
+                                                        />
+                                                        {answer}
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                        {/* Pagination Buttons */}
+                        <div className={styles.paginationButtons}>
+                            <button type="button" className={styles.paginationButton} onClick={prevPage}>
+                                Previous
+                            </button>
+                            <button type="submit" className={styles.paginationButton} onClick={handleSubmit}>
+                                Submit
+                            </button>
+                        </div>
+                    </>
+                )}
+                {/* Final Thank You Page */}
+                {page === 5 && (
+                    <div className={styles.thankYouPage}>
+                        <h2 className={styles.centerText}>Thank You!</h2>
+                        <p className={styles.centerText}>Your questionnaire responses have been successfully submitted.</p>
+                        <p className={styles.centerText}>We appreciate your participation and commitment to sustainability.</p>
+                        <Img className={styles.marginLeft} height='400' alt='Thank You Image' src='/images/pages/401.png' />
+                        <div>
+                            <Link href='/dashboard/' passHref>
+                                <button type="button" className={styles.goBackButton} onClick={nextPage}>
+                                    Go Back
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            )}
-        </form>
+                )}
+            </form>
+        </div>
     );
 };
 

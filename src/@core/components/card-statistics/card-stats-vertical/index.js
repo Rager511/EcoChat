@@ -1,8 +1,6 @@
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Avatar from '@mui/material/Avatar'
-import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
@@ -11,41 +9,33 @@ import DotsVertical from 'mdi-material-ui/DotsVertical'
 
 const CardStatsVertical = props => {
   // ** Props
-  const { title, subtitle, color, icon, stats, trend, trendNumber } = props
+  const { title, subtitle, color, icon, stats, trend, trendNumber, onClick, isSelected } = props
 
   return (
-    <Card>
-      <CardContent>
-        <Box sx={{ display: 'flex', marginBottom: 5.5, alignItems: 'flex-start', justifyContent: 'space-between' }}>
-          <Avatar sx={{ boxShadow: 3, marginRight: 4, color: 'common.white', backgroundColor: `${color}.main` }}>
+    <Card sx={{ backgroundColor: isSelected ? '#E5E4E2' : 'transparent' }} onClick={onClick}>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 5.5 }}>
+          <Avatar sx={{ boxShadow: 3, marginRight: 4, color: 'common.white', backgroundColor: `#9C1DE7` }}>
             {icon}
           </Avatar>
-          <IconButton size='small' aria-label='settings' className='card-more-options' sx={{ color: 'text.secondary' }}>
-            <DotsVertical />
-          </IconButton>
         </Box>
-        <Typography sx={{ fontWeight: 600, fontSize: '0.875rem' }}>{title}</Typography>
-        <Box sx={{ marginTop: 1.5, display: 'flex', flexWrap: 'wrap', marginBottom: 1.5, alignItems: 'flex-start' }}>
-          <Typography variant='h6' sx={{ mr: 2 }}>
+        <Typography sx={{ fontWeight: 600, fontSize: '0.875rem', textAlign: 'center' }}>{title}</Typography>
+        <Box sx={{ marginTop: 1.5, display: 'flex', flexWrap: 'wrap', marginBottom: 1.5, alignItems: 'center', justifyContent: 'center' }}>
+          <Typography variant='h6' sx={{ mr: 2, textAlign: 'center' }}>
             {stats}
           </Typography>
           <Typography
             component='sup'
             variant='caption'
-            sx={{ color: trend === 'positive' ? 'success.main' : 'error.main' }}
+            sx={{ color: '#9C1DE7', textAlign: 'center' }}
           >
             {trendNumber}
           </Typography>
         </Box>
-        <Typography variant='caption'>{subtitle}</Typography>
+        <Typography variant='caption' sx={{ textAlign: 'center' }}>{subtitle}</Typography>
       </CardContent>
     </Card>
   )
 }
 
 export default CardStatsVertical
-
-CardStatsVertical.defaultProps = {
-  color: 'primary',
-  trend: 'positive'
-}

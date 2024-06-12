@@ -49,14 +49,14 @@ const weeklyData = [
   { name: 'Week 4', visitors: 2500 },
 ];
 
-const RequestsData = [
-  { name: 'Mon', clicks: 540 },
-  { name: 'Tue', clicks: 380 },
-  { name: 'Wed', clicks: 300 },
-  { name: 'Thu', clicks: 250 },
-  { name: 'Fri', clicks: 467 },
-  { name: 'Sat', clicks: 350 },
-  { name: 'Sun', clicks: 210 },
+const SubscriptionsData = [
+  { name: 'Mon', Subs: 540 },
+  { name: 'Tue', Subs: 380 },
+  { name: 'Wed', Subs: 300 },
+  { name: 'Thu', Subs: 250 },
+  { name: 'Fri', Subs: 467 },
+  { name: 'Sat', Subs: 350 },
+  { name: 'Sun', Subs: 210 },
 
 ];
 
@@ -79,22 +79,22 @@ const StatisticsCard = ({ open, handleClose }) => {
   let chartData, chartTitle;
   if (selectedChart === 'monthly') {
     chartData = monthlyData;
-    chartTitle = 'Number of Clients (Monthly)';
+    chartTitle = 'Number of Users (Monthly)';
   } else if (selectedChart === 'daily') {
     chartData = dailyData;
-    chartTitle = 'Number of Visitors (Daily)';
+    chartTitle = 'Number of Users (Daily)';
   } else if (selectedChart === 'weekly') {
     chartData = weeklyData;
-    chartTitle = 'Number of Visitors (Weekly)';
-  } else if (selectedChart === 'requests') {
-    chartData = RequestsData;
-    chartTitle = 'Number of Reports Requests (Daily)';
+    chartTitle = 'Number of Users (Weekly)';
+  } else if (selectedChart === 'subs') {
+    chartData =SubscriptionsData;
+    chartTitle = 'Number of  Subscriptions (Daily)';
   }
 
   return (
     <Card>
       <CardHeader
-        title='Statistics Charts'
+        title='Statistics Charts (ChatBot Users)'
         action={
           <IconButton size='small' aria-label='settings' className='card-more-options'>
             <DotsVertical />
@@ -148,10 +148,10 @@ const StatisticsCard = ({ open, handleClose }) => {
             value={selectedChart}
             onChange={handleChartTypeChange}
           >
-            <MenuItem value="monthly">Number of Clients per month</MenuItem>
-            <MenuItem value="weekly">Number of Clients per week</MenuItem>
-            <MenuItem value="daily">Number of Clients per day</MenuItem>
-            <MenuItem value="requests">Number of Reports Requests</MenuItem>
+            <MenuItem value="monthly">Number of Users per month</MenuItem>
+            <MenuItem value="weekly">Number of Users per week</MenuItem>
+            <MenuItem value="daily">Number of Users per day</MenuItem>
+            <MenuItem value="subs">Number of Subscriptions</MenuItem>
           </Select>
         </DialogTitle>
         <DialogContent>
@@ -162,7 +162,7 @@ const StatisticsCard = ({ open, handleClose }) => {
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
-              <Bar dataKey={selectedChart === 'monthly' ? 'clients' : selectedChart === 'requests' ? 'clicks' : 'visitors'} fill="#8884d8" />
+              <Bar dataKey={selectedChart === 'monthly' ? 'clients' : selectedChart === 'subs' ? 'Subs' : 'visitors'} fill="#581B98" />
             </BarChart>
           </ResponsiveContainer>
         </DialogContent>

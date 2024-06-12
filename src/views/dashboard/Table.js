@@ -17,69 +17,69 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 
-const rows = [
+export const rows = [
   {
     adress: '123 Main St, Springfield, IL 62704, USA',
     date: '09/27/2018',
     client: 'Sally Quinn',
-    revenuefigure: '$19586.23',
+    role: 'Software Dev',
     email: 'eebsworth2m@sbwire.com',
-    designation: 'Company A'
+    gender: 'Female'
   },
   {
     adress: '456 Elm St, Portland, OR 97205, USA',
     date: '09/23/2016',
-    revenuefigure: '$23896.35',
+    role: 'Software Dev',
     client: 'Margaret Bowers',
     email: 'kocrevy0@thetimes.co.uk',
-    designation: 'Company B'
+    gender: 'Female'
   },
   {
     adress: '456 Elm St, Portland, OR 97205, USA',
     date: '10/15/2017',
     client: 'Minnie Roy',
-    revenuefigure: '$18991.67',
+    role: 'Software Dev',
     email: 'ediehn6@163.com',
-    designation: 'Company C'
+    gender: 'Male'
   },
   {
     adress: '456 Elm St, Portland, OR 97205, USA',
     date: '06/12/2018',
-    revenuefigure: '$19252.12',
+    role: 'Software Dev',
     client: 'Ralph Leonard',
     email: 'dfalloona@ifeng.com',
-    designation: 'Company D'
+    gender: 'Male'
   },
   {
     adress: '456 Elm St, Portland, OR 97205, USA',
     date: '03/24/2024d',
-    revenuefigure: '$13076.28',
+    role: 'Software Dev',
     client: 'Annie Martin',
-    designation: 'Company E',
-    email: 'sganderton2@tuttocitta.it'
+    email: 'annmartin@ifeng.com',
+    gender: 'Female'
   },
   {
     adress: '456 Elm St, Portland, OR 97205, USA',
     date: '08/25/2017',
-    revenuefigure: '$10909.52',
+    role: 'Software Dev',
     client: 'Adeline Day',
     email: 'hnisius4@gnu.org',
-    designation: 'Company F'
+    gender: 'Female'
   },
   {
     adress: '456 Elm St, Portland, OR 97205, USA',
     date: '06/01/2017',
-    revenuefigure: '$17803.80',
+    role: 'Software Dev',
     client: 'Lora Jackson',
-    designation: 'Company G',
+    gender: 'Female',
     email: 'ghoneywood5@narod.ru'
   },
   {
     adress: '456 Elm St, Portland, OR 97205, USA',
     date: '12/03/2017',
-    revenuefigure: '$12336.17',
+    role: 'Software Dev',
     client: 'Rodney Sharp',
-    designation: 'Company H',
+    gender: 'Male',
     email: 'dcrossman3@google.co.jp'
   }
 ]
@@ -155,7 +155,7 @@ const DashboardTable = () => {
           <TableHead>
             <TableRow sx={{ backgroundColor: 'primary.main' }}>
               <TableCell>
-              <Typography variant="subtitle1" h style={{ color: '#fff',fontSize: '0.8rem' }}>Client</Typography>
+              <Typography variant="subtitle1" h style={{ color: '#fff',fontSize: '0.8rem' }}>Employee</Typography>
               </TableCell>
               <TableCell>
               <Typography variant="subtitle1" h style={{ color: '#fff',fontSize: '0.8rem' }}>Email</Typography>
@@ -164,7 +164,7 @@ const DashboardTable = () => {
               <Typography variant="subtitle1" h style={{ color: '#fff',fontSize: '0.8rem' }}>Date</Typography>
               </TableCell>
               <TableCell>
-              <Typography variant="subtitle1" h style={{ color: '#fff',fontSize: '0.8rem' }}>Revenue Figure</Typography>
+              <Typography variant="subtitle1" h style={{ color: '#fff',fontSize: '0.8rem' }}>Role</Typography>
               </TableCell>
               <TableCell>
               <Typography variant="subtitle1" h style={{ color: '#fff',fontSize: '0.8rem' }}>Address</Typography>
@@ -182,12 +182,12 @@ const DashboardTable = () => {
                     >
                       {row.client}
                     </Typography>
-                    <Typography variant='caption'>{row.designation}</Typography>
+                    <Typography variant='caption'>{row.gender}</Typography>
                   </Box>
                 </TableCell>
                 <TableCell>{row.email}</TableCell>
                 <TableCell>{row.date}</TableCell>
-                <TableCell>{row.revenuefigure}</TableCell>
+                <TableCell>{row.role}</TableCell>
                 <TableCell>{row.adress}</TableCell>
               </TableRow>
             ))}

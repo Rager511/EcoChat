@@ -92,22 +92,19 @@
     margin-bottom: 20px;
 }
 
+
 .progressBar {
     width: 100%;
-    background-color: #f3f3f3;
-    border-radius: 13px;
-    overflow: hidden;
+    background-color: #f2f2f2;
+    height: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
 }
 
-.progressBarFill {
-    height: 20px;
-    width: 0;
-    background-color: #9C1DE7;
-    border-radius: 13px;
-    text-align: center;
-    color: white;
-    line-height: 20px;
+.progress {
+    background-color:  #9C1DE7;
+    height: 100%;
+    border-radius: 10px;
 }
 
 .startButton {
